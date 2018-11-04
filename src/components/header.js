@@ -1,33 +1,55 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import styled from 'styled-components'
+
+const Nav = styled.nav`
+  z-index: 100;
+  position: fixed;
+  height: 3rem;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: {props => props.theme.bgDark};
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 0 2rem 0 1rem;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  a {
+    padding-left: 2rem;
+    text-decoration: none;
+    color: {props = props.theme.textLight};
+    transition: color 0.2s;
+    :hover {
+      color: {props = props.theme.textPrimary};
+    }
+    .active {
+      color: {props = props.theme.textPrimaryDarker};
+    }
+  }
+`
 
 const Header = ({ siteTitle }) => (
-  <div
-    style={{
-      background: 'rebeccapurple',
-      marginBottom: '1.45rem',
-    }}
-  >
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: 'white',
-            textDecoration: 'none',
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </div>
+  <Nav>
+    <Link to="/" activeClassName="active">
+      {siteTitle}
+    </Link>
+    <span>
+      <Link to="/#about-me" activeClassName="active">
+        About
+      </Link>
+      <Link to="/#projects" activeClassName="active">
+        Projects
+      </Link>
+      <Link to="/#blog" activeClassName="active">
+        Blog
+      </Link>
+      <Link to="/#contact" activeClassName="active">
+        Contact
+      </Link>
+    </span>
+  </Nav>
 )
 
 export default Header
