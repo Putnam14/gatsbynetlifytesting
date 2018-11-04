@@ -5,7 +5,7 @@ import Headroom from 'react-headroom'
 
 const Nav = styled.nav`
   height: 3rem;
-  background-color: {props => props.theme.bgDark};
+  background-color: ${props => props.theme.bgDark};
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
@@ -15,13 +15,13 @@ const Nav = styled.nav`
   a {
     padding-left: 2rem;
     text-decoration: none;
-    color: {props = props.theme.textLight};
+    color: ${props => props.theme.textLight};
     transition: color 0.2s;
     :hover {
-      color: {props = props.theme.textPrimary};
+      color: ${props => props.theme.textPrimary};
     }
     .active {
-      color: {props = props.theme.textPrimaryDarker};
+      color: ${props => props.theme.textPrimaryDarker};
     }
   }
 `
