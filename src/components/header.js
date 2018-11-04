@@ -27,7 +27,7 @@ const Nav = styled.nav`
 `
 
 const Header = ({ siteTitle }) => (
-  <Headroom>
+  <Headroom style={{ zIndex: '100' }}>
     <Nav>
       <Link to="/" activeClassName="active">
         {siteTitle}
