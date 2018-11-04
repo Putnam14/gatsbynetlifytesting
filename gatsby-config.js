@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'Bridger Putnam',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -26,5 +26,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
+    'gatsby-plugin-styled-components',
   ],
 }
