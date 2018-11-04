@@ -1,19 +1,15 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
+import Headroom from 'react-headroom'
 
 const Nav = styled.nav`
-  z-index: 100;
-  position: fixed;
   height: 3rem;
-  top: 0;
-  left: 0;
-  right: 0;
   background-color: {props => props.theme.bgDark};
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
-  padding: 0 2rem 0 1rem;
+  padding: 0 2rem 0;
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   a {
@@ -31,25 +27,27 @@ const Nav = styled.nav`
 `
 
 const Header = ({ siteTitle }) => (
-  <Nav>
-    <Link to="/" activeClassName="active">
-      {siteTitle}
-    </Link>
-    <span>
-      <Link to="/#about-me" activeClassName="active">
-        About
+  <Headroom>
+    <Nav>
+      <Link to="/" activeClassName="active">
+        {siteTitle}
       </Link>
-      <Link to="/#projects" activeClassName="active">
-        Projects
-      </Link>
-      <Link to="/#blog" activeClassName="active">
-        Blog
-      </Link>
-      <Link to="/#contact" activeClassName="active">
-        Contact
-      </Link>
-    </span>
-  </Nav>
+      <span>
+        <Link to="/#about-me" activeClassName="active">
+          About
+        </Link>
+        <Link to="/#projects" activeClassName="active">
+          Projects
+        </Link>
+        <Link to="/#blog" activeClassName="active">
+          Blog
+        </Link>
+        <Link to="/#contact" activeClassName="active">
+          Contact
+        </Link>
+      </span>
+    </Nav>
+  </Headroom>
 )
 
 export default Header
