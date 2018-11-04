@@ -8,6 +8,11 @@ import Header from './header'
 import './layout.css'
 
 const theme = {
+  bgDark: 'rgba(27, 27, 27, 0.75)',
+  dark: 'rgb(27, 27, 27)',
+  light: 'whitesmoke',
+  textPrimary: 'teal',
+  textPrimaryDarker: 'rgb(1, 90, 90)',
   red: '#FF0000',
   black: '#393939',
   grey: '#3A3A3A',
@@ -18,8 +23,17 @@ const theme = {
 }
 
 const StyledPage = styled.div`
-  background: white;
+  background: ${props => props.theme.light};
   color: ${props => props.theme.black};
+  a {
+    text-decoration: none;
+    color: ${props => props.theme.textPrimary};
+  }
+  a:hover {
+    cursor: pointer;
+    color: ${props => props.theme.textPrimaryDarker};
+    transition: color 0.2s;
+  }
 `
 
 const Inner = styled.div`
