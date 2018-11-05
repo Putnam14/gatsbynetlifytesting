@@ -5,6 +5,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import styled, { ThemeProvider } from 'styled-components'
 
 import Header from './header'
+import Footer from './footer'
 import './layout.css'
 
 const theme = {
@@ -39,7 +40,16 @@ const StyledPage = styled.div`
 
 const Inner = styled.div`
   margin: 0 auto;
-  padding: 0 2rem 1.45rem;
+  padding: 0 2rem;
+  main {
+    margin: 0 auto;
+    padding-bottom: 1.45rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    box-shadow: ${props => props.theme.bs};
+    max-width: ${props => props.theme.maxWidth};
+  }
 `
 
 const Layout = ({ children }) => (
@@ -67,6 +77,7 @@ const Layout = ({ children }) => (
           </Helmet>
           <Header siteTitle={data.site.siteMetadata.title} />
           <Inner>{children}</Inner>
+          <Footer />
         </StyledPage>
       </ThemeProvider>
     )}
