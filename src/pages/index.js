@@ -36,9 +36,14 @@ const Background = styled.div`
 const BlogPostContainer = styled.div`
   margin: -1rem 2rem 2rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: auto auto auto;
   grid-gap: 2rem;
   justify-items: space-evenly;
+`
+const Projects = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
 `
 const ProjectContainer = styled.div`
   margin: 0 2rem;
@@ -53,6 +58,41 @@ const About = styled.div`
 
 const IndexPage = props => {
   const { data } = props
+  const blogPostsData = {
+    post1: {
+      title: 'Blog Post 1',
+      imgLink: '',
+      text: 'This is a blog post',
+      postLink: 'Test Link',
+    },
+    post2: {
+      title: 'Blog Post 2',
+      imgLink: '',
+      text: 'This is a blog post',
+      postLink: 'Test Link',
+    },
+    post3: {
+      title: 'Blog Post 3',
+      imgLink: 'me.png',
+      text: 'This is a blog post',
+      postLink: 'Test Link',
+    },
+  }
+  const blogPosts = Object.keys(blogPostsData).map(key => (
+    <BlogPost blogPost={blogPostsData[key]} />
+  ))
+  const projectsData = {
+    project1: {
+      title: 'Reading Length',
+      imgLink: data.rLImage.childImageSharp.fluid,
+      text:
+        'Book length search engine using React, Apollo, Next.JS, GraphQL, and third-party APIs',
+      projLink: 'https://www.readinglength.com',
+    },
+  }
+  const projects = Object.keys(projectsData).map(key => (
+    <Project projData={projectsData[key]} />
+  ))
   return (
     <Layout>
       <IndexHeader>
@@ -74,11 +114,7 @@ const IndexPage = props => {
         </Welcome>
       </IndexHeader>
       <main>
-        <BlogPostContainer id="blog">
-          <BlogPost />
-          <BlogPost />
-          <BlogPost />
-        </BlogPostContainer>
+        <BlogPostContainer id="blog">{blogPosts}</BlogPostContainer>
         <About id="about-me">
           <h1>Let's put some text here</h1>
           <p>And some more here to convince people to hire me</p>
@@ -91,13 +127,10 @@ const IndexPage = props => {
             />
           </div>
         </About>
-        <ProjectContainer id="projects">
-          <Project />
-          <Project />
-          <Project />
-          <Project />
-          <Project />
-        </ProjectContainer>
+        <Projects id="projects">
+          <h2>Projects</h2>
+          <ProjectContainer>{projects}</ProjectContainer>
+        </Projects>
       </main>
     </Layout>
   )
@@ -106,7 +139,7 @@ const IndexPage = props => {
 export default IndexPage
 
 export const pageQuery = graphql`
-  query Images {
+  query IndexQuery {
     profilePic: file(relativePath: { eq: "me.png" }) {
       childImageSharp {
         fluid {
@@ -115,6 +148,13 @@ export const pageQuery = graphql`
       }
     }
     backgroundImage: file(relativePath: { eq: "falls.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    rLImage: file(relativePath: { eq: "rl.png" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid
