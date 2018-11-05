@@ -3,6 +3,8 @@ import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 import Layout from '../components/layout'
+import BlogPost from '../components/blogPost'
+import Project from '../components/project'
 
 const IndexHeader = styled.header`
   margin: -3rem -2rem 0;
@@ -31,6 +33,23 @@ const Background = styled.div`
   top: 0;
   left: 0;
 `
+const BlogPostContainer = styled.div`
+  margin: -1rem 2rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2rem;
+  justify-items: space-evenly;
+`
+const ProjectContainer = styled.div`
+  margin: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2rem;
+  justify-items: space-evenly;
+`
+const About = styled.div`
+  padding: 0 2rem;
+`
 
 const IndexPage = props => {
   const { data } = props
@@ -54,17 +73,32 @@ const IndexPage = props => {
           <p>Will somebody please buy me some Yeezys</p>
         </Welcome>
       </IndexHeader>
-      <h1>Let's put some text here</h1>
-      <p>And some more here to convince people to hire me</p>
-      <p>Look at this crack dog:</p>
-      <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
-        <Img
-          title="Test image"
-          alt="This is a test image"
-          fluid={data.profilePic.childImageSharp.fluid}
-        />
-      </div>
-      <Link to="/page-2/">Go to page 2</Link>
+      <main>
+        <BlogPostContainer id="blog">
+          <BlogPost />
+          <BlogPost />
+          <BlogPost />
+        </BlogPostContainer>
+        <About id="about-me">
+          <h1>Let's put some text here</h1>
+          <p>And some more here to convince people to hire me</p>
+          <p>Look at this crack dog:</p>
+          <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
+            <Img
+              title="Test image"
+              alt="This is a test image"
+              fluid={data.profilePic.childImageSharp.fluid}
+            />
+          </div>
+        </About>
+        <ProjectContainer id="projects">
+          <Project />
+          <Project />
+          <Project />
+          <Project />
+          <Project />
+        </ProjectContainer>
+      </main>
     </Layout>
   )
 }
