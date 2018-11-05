@@ -12,8 +12,8 @@ const theme = {
   bgDark: 'rgba(27, 27, 27, 0.75)',
   dark: 'rgb(27, 27, 27)',
   light: 'whitesmoke',
-  textPrimary: 'teal',
-  textPrimaryDarker: 'rgb(1, 90, 90)',
+  linkText: 'teal',
+  linkTextActive: 'rgb(1, 90, 90)',
   red: '#FF0000',
   black: '#393939',
   grey: '#3A3A3A',
@@ -25,15 +25,15 @@ const theme = {
 }
 
 const StyledPage = styled.div`
-  background: ${props => props.theme.light};
+  background: ${props => props.theme.offWhite};
   color: ${props => props.theme.black};
   a {
     text-decoration: none;
-    color: ${props => props.theme.textPrimary};
+    color: ${props => props.theme.linkText};
   }
   a:hover {
     cursor: pointer;
-    color: ${props => props.theme.textPrimaryDarker};
+    color: ${props => props.theme.linkTextActive};
     transition: color 0.2s;
   }
 `
@@ -42,6 +42,7 @@ const Inner = styled.div`
   margin: 0 auto;
   padding: 0 2rem;
   main {
+    background: ${props => props.theme.light};
     margin: 0 auto;
     padding-bottom: 1.45rem;
     display: grid;
