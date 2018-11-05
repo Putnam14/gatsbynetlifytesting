@@ -4,17 +4,13 @@ import { Link, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Card from './Card'
 
-class project extends Component {
-  render() {
-    return (
-      <Card>
-        <h2>This is a project</h2>
-        <p>[Image goes here]</p>
-        <p>About the project</p>
-        <Link>Link to the project</Link>
-      </Card>
-    )
-  }
-}
+const project = ({ projData }) => (
+  <Card>
+    <h3>{projData.title}</h3>
+    <Img alt={`${projData.title} preview`} fluid={projData.imgLink} />
+    <p>{projData.text}</p>
+    <a href={projData.projLink}>Visit {projData.title}</a>
+  </Card>
+)
 
 export default project
