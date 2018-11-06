@@ -38,25 +38,25 @@ const BlogPostContainer = styled.div`
   display: grid;
   grid-template-columns: auto auto auto;
   @media (max-width: 735px) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto auto;
   }
   @media (max-width: 530px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: auto;
   }
   grid-gap: 2rem;
   justify-items: space-evenly;
 `
 const Projects = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: auto;
   justify-items: center;
 `
 const ProjectContainer = styled.div`
   margin: 0 2rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto auto;
   @media (max-width: 530px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: auto;
   }
   grid-gap: 2rem;
   justify-items: space-evenly;
